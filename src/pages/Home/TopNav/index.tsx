@@ -1,16 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { FaShoppingCart } from 'react-icons/fa';
 
 import api from 'src/services/api';
 
-import {
-  Container,
-  Header,
-  Logo,
-  CartButton,
-  CategoriesList,
-  CategoryName,
-} from './styles';
+import { Container, CategoriesList, CategoryName } from './styles';
 
 interface Category {
   id: string;
@@ -28,17 +20,6 @@ const TopNav: React.FC = () => {
 
   return (
     <Container>
-      <Header>
-        <Logo>
-          Super<span>Market</span>
-        </Logo>
-
-        <span>Pedidos</span>
-        <CartButton>
-          <FaShoppingCart />
-        </CartButton>
-      </Header>
-
       <CategoriesList>
         {categories.map((category) => (
           <CategoryName key={category.id}>{category.descricao}</CategoryName>
