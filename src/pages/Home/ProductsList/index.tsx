@@ -12,7 +12,7 @@ import {
   AddToCartButton,
 } from './styles';
 
-interface Products {
+interface Product {
   id: string;
   descricao: string;
   preco: number;
@@ -20,7 +20,7 @@ interface Products {
 }
 
 const ProductList: React.FC = () => {
-  const [products, setProducts] = useState<Products[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     api.get('produtos').then((response) => {
