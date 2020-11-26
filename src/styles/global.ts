@@ -12,10 +12,6 @@ export default createGlobalStyle`
     height: 100%;
   }
 
-  body {
-    color: #fff;
-  }
-
   body, input, button, h1, h2, h3, h4, h5, h6, strong {
     font-family: 'Poppins', sans-serif;
   }

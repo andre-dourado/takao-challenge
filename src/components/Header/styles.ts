@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.header`
   background: #819823;
+  color: #fff;
 `;
 
 export const MaxWidthContainer = styled.div`

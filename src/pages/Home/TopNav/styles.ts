@@ -7,6 +7,7 @@ export const Container = styled.nav`
   background: #819823;
   padding-bottom: 12px;
   min-height: 60px;
+  color: #fff;
 `;
 
 export const CategoriesList = styled.ul`
