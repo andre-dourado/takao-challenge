@@ -1,5 +1,7 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import ptBR from 'date-fns/locale/pt-BR';
+import { format } from 'date-fns';
 
 import api from 'src/services/api';
 import DefaultLayout from '../_layouts/default';
@@ -11,29 +13,48 @@ import {
   DescriptionContainer,
 } from './styles';
 
+interface Status {
+  descricao: string;
+}
+
+interface Purchase {
+  codigo: string;
+  status: Status;
+  created_at: Date;
+}
+
 const PurchaseRequests: React.FC = () => {
+  const [purchases, setPurchases] = useState<Purchase[]>([]);
+
+  useEffect(() => {
+    api.get('pedidos').then((response) => {
+      setPurchases(response.data);
+    });
+  }, []);
+
   return (
     <DefaultLayout>
       <Container>
-        <RequestContainer>
-          <Status>Entregue</Status>
+        {purchases.map((purchase) => (
+          <RequestContainer>
+            <Status>{purchase.status.descricao}</Status>
 
-          <DescriptionContainer>
-            <span>Pedido: 31323</span>
-            <span>Criado em: 24 de janeiro de 1995</span>
-            <Link to="/purchases">Ver detalhes</Link>
-          </DescriptionContainer>
-        </RequestContainer>
-
-        <RequestContainer>
-          <Status>Entregue</Status>
-
-          <DescriptionContainer>
-            <span>Pedido: 31323</span>
-            <span>Criado em: 24 de janeiro de 1995</span>
-            <a href="/purchases/#">Ver detalhes</a>
-          </DescriptionContainer>
-        </RequestContainer>
+            <DescriptionContainer>
+              <span>Pedido: {purchase.codigo}</span>
+              <span>
+                Criado em:{' '}
+                {format(
+                  new Date(purchase.created_at),
+                  "dd 'de' MMMM 'de' yyyy",
+                  {
+                    locale: ptBR,
+                  },
+                )}
+              </span>
+              <Link to="/purchases">Ver detalhes</Link>
+            </DescriptionContainer>
+          </RequestContainer>
+        ))}
       </Container>
     </DefaultLayout>
   );
