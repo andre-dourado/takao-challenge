@@ -12,7 +12,10 @@ const Header: React.FC = () => {
           Super<span>Market</span>
         </Logo>
 
-        <span>Pedidos</span>
+        <Link to="/purchases" style={{ color: '#fff' }}>
+          Pedidos
+        </Link>
+
         <Link to="/cart">
           <CartButton>
             <FaShoppingCart />
