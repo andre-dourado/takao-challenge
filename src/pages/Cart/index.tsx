@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import api from 'src/services/api';
 import formatCurrency from 'src/utils/format-currency';
