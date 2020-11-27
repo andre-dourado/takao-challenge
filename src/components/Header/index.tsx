@@ -8,9 +8,11 @@ const Header: React.FC = () => {
   return (
     <Container>
       <MaxWidthContainer>
-        <Logo>
-          Super<span>Market</span>
-        </Logo>
+        <Link to="/" style={{ flex: 1 }}>
+          <Logo>
+            Super<span>Market</span>
+          </Logo>
+        </Link>
 
         <Link to="/purchases" style={{ color: '#fff' }}>
           Pedidos

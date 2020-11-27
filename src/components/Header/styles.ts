@@ -17,7 +17,6 @@ export const MaxWidthContainer = styled.div`
 
 export const Logo = styled.h1`
   display: flex;
-  flex: 1;
   color: #fff812;
 
   span {
