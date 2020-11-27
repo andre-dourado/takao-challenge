@@ -16,7 +16,7 @@ interface Product {
   id: string;
   descricao: string;
   preco: number;
-  imagem: string;
+  imagem_url: string;
 }
 
 const ProductList: React.FC = () => {
@@ -32,7 +32,7 @@ const ProductList: React.FC = () => {
     <Container>
       {products.map((product) => (
         <ProductContainer key={product.id}>
-          <Image src={`data:image/png;base64, ${product.imagem}`} />
+          <Image src={product.imagem_url} />
           <Description>{product.descricao}</Description>
           <Price>{formatCurrency(product.preco)}</Price>
           <AddToCartButton>Adicionar</AddToCartButton>
